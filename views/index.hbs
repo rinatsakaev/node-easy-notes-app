@@ -16,16 +16,16 @@
 </form>
 <section class="tables">
     {{#each tables}}
-        <div class="table" data-table-capacity="{{capacity}}" data-table-id="{{id}}">
+        <div class="table" data-capacity="{{capacity}}" data-table-id="{{id}}">
             <span class="table__guests-count">{{guestCount}}</span>
             <span class="table__capacity">{{capacity}}</span>
         </div>
     {{/each}}
 </section>
 <div class="modal modal_hidden" id="modal">
-    <img src="images/delete.svg" class="modal__close">
+    <img src="/images/delete.svg" class="modal__close">
     <div class="modal__content"></div>
-    <form action="/addGuest" method="post">
+    <form action="/addGuest" method="post" id="add_guest_form">
         <input type="text" name="guestName">
         <input type="hidden" name="tableId" id="table_id_input">
         <input type="hidden" name="date" id="form_date_input">

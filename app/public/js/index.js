@@ -3,6 +3,7 @@ window.onload = function () {
 	document.getElementById('modal').getElementsByClassName('modal__close')[0]
 		.addEventListener('click', closeModalListener);
 	document.getElementById('date_input').value = window.location.pathname.split('/')[2];
+	document.getElementById('add_guest_form').addEventListener('submit', checkCapacity);
 
 	if (window.location.pathname.split('/').length !== 3) {
 		const today = new Date();
@@ -14,6 +15,21 @@ window.onload = function () {
 	document.getElementById('date_input').addEventListener('change', changeDate);
 
 };
+
+function checkCapacity(e) {
+	const quantity = document.getElementsByClassName('modal__content')[0].children.length;
+	const tableId = document.getElementById('table_id_input').value;
+	let capacity = -1;
+	for (let table of document.getElementsByClassName('table')){
+		if (table.dataset.tableId === tableId){
+			capacity = parseInt(table.dataset.capacity);
+		}
+	}
+	if (quantity >= capacity){
+		alert('Не влезает');
+		e.preventDefault();
+	}
+}
 
 function changeDate(e) {
 	const arr = window.location.pathname.split('/');
