@@ -79,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1579514698244</updated>
       <workItem from="1579514699452" duration="8836000" />
-      <workItem from="1579777175459" duration="4643000" />
+      <workItem from="1579777175459" duration="8624000" />
     </task>
     <servers />
   </component>
@@ -100,22 +100,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/controllers/guest.controller.js</url>
-          <line>5</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/controllers/guest.controller.js</url>
-          <line>59</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
         <watch expression="tables[0]._id.toString()" language="JavaScript" />

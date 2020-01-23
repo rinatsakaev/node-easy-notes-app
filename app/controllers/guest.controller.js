@@ -1,6 +1,6 @@
 const Guest = require('../models/guest.model.js');
 const Table = require('../models/table.model.js');
-
+const dateFormat = require('dateformat');
 // Create and Save a new Note
 exports.addGuest = (req, res) => {
 	const guest = new Guest({
@@ -44,7 +44,7 @@ exports.findAll = (req, res) => {
 				Guest.find(
 					{
 						tableId: tables[i]._id.toString(),
-						date: req.params === undefined?{}:req.params.date
+						date: req.params === undefined?dateFormat(Date.now(),  "yyyy-mm-dd"):req.params.date
 					})
 					.then(guests => tables[i].guestCount = guests.length);
 
