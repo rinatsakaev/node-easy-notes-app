@@ -1,14 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const hbs  = require('express-handlebars');
 
-// create express app
+// addGuest express app
 const app = express();
-
+app.set("engine", hbs({defaultLayout: 'main.hbs', extname: '.hbs'}));
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/app/public'));
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
@@ -20,18 +22,13 @@ mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url, {
 	useNewUrlParser: true
 }).then(() => {
-    console.log("Successfully connected to the database");    
+	// mongoose.connection.db.dropDatabase();
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
 });
 
-// define a simple route
-app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
-});
-
-require('./app/routes/note.routes.js')(app);
+require('./app/routes/guest.routes.js')(app);
 
 // listen for requests
 app.listen(3000, () => {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body>
+<h1>Ресторан "Дилижанс"</h1>
+<input type="date" id="date_input">
+<label for="date_input">дата</label>
+<form method="post" action="/addTable">
+    <input type="number" name="capacity">
+    <label for="capacity">Вместимость</label>
+    <button type="submit">Добавить столик</button>
+</form>
+<section class="tables">
+    {{#each tables}}
+        <div class="table" data-table-capacity="{{capacity}}" data-table-id="{{id}}">
+            <span class="table__guests-count">{{guestCount}}</span>
+            <span class="table__capacity">{{capacity}}</span>
+        </div>
+    {{/each}}
+</section>
+<div class="modal modal_hidden" id="modal">
+    <img src="images/delete.svg" class="modal__close">
+    <div class="modal__content"></div>
+    <form action="/addGuest" method="post">
+        <input type="text" name="guestName">
+        <input type="hidden" name="tableId" id="table_id_input">
+        <input type="hidden" name="date" id="form_date_input">
+        <label for="guestName">Добавить гостя</label>
+        <button type="submit">Тык</button>
+    </form>
+</div>
+</body>
+</html>
+
